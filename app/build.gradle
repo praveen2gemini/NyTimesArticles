@@ -89,6 +89,8 @@ dependencies {
     // for intent mocking
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
 
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+
     // Lifecycle components
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"

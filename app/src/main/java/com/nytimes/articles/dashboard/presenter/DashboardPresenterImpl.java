@@ -25,6 +25,7 @@ public class DashboardPresenterImpl implements DashboardPresenter {
     @Override
     public void fetchPopularViewedArticles(@NonNull ArticleType type) {
         if (viewUpdater.isDeviceOffline()) {
+            viewUpdater.showEmptyMessage();
             viewUpdater.showErrorMessage(R.string.http_network_error, R.string.http_no_network);
             return;
         }

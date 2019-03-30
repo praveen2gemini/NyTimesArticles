@@ -98,28 +98,28 @@ public class DashboardFragment extends BaseFragment implements DashboardPresente
 
     @Override
     public void showProgress() {
-        if (!isResumed() || isRemoving()) return;
+        if (!isAdded() || isRemoving()) return;
         show(progressiveView);
         hide(mRecyclerView, emptyStatusView);
     }
 
     @Override
     public void hideProgress() {
-        if (!isResumed() || isRemoving()) return;
+        if (!isAdded() || isRemoving()) return;
         hide(progressiveView, emptyStatusView);
         show(mRecyclerView);
     }
 
     @Override
     public void showEmptyMessage() {
-        if (!isResumed() || isRemoving()) return;
+        if (!isAdded() || isRemoving()) return;
         hide(progressiveView, mRecyclerView);
         show(emptyStatusView);
     }
 
     @Override
     public void showErrorMessage(@StringRes int errorTitle, @StringRes int errorMessage) {
-        if (null == getContext() || !isResumed() || isRemoving()) return;
+        if (null == getContext() || !isAdded() || isRemoving()) return;
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         if (errorTitle != -1) {
             builder.setTitle(errorTitle);
