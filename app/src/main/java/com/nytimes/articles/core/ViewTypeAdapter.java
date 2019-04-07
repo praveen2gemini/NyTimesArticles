@@ -1,5 +1,6 @@
 package com.nytimes.articles.core;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +17,15 @@ public abstract class ViewTypeAdapter<V extends View, T>
     // Log tag
     private static final String TAG = ViewTypeAdapter.class.getSimpleName();
 
+    @NonNull
     @Override
-    public ViewHolder<V> onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder<V> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         V v = createView(viewType);
         return new ViewHolder<>(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder<V> holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder<V> holder, int position) {
         View v = holder.itemView;
         if (v instanceof Recyclable) {
             preRecycleData((V) v, position);
@@ -73,7 +75,7 @@ public abstract class ViewTypeAdapter<V extends View, T>
     /**
      * Generic ViewHolder
      */
-    static class ViewHolder<V extends View> extends RecyclerView.ViewHolder {
+    public static class ViewHolder<V extends View> extends RecyclerView.ViewHolder {
         public ViewHolder(V itemView) {
             super(itemView);
         }
